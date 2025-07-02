@@ -1,3 +1,4 @@
+
 import { GoogleGenAI } from "@google/genai";
 import { 
     ReadingPassage, Level, VocabCategory, VocabType, VocabDBItem, PartOfSpeech,
@@ -8,10 +9,9 @@ import {
 import { VOCAB_CATEGORIES, LEVELS, ALL_LEVELS, ALL_CATEGORIES, PARTS_OF_SPEECH, GRAMMAR_TOPICS } from "../constants";
 
 
-if (!process.env.API_KEY) {
-    throw new Error("API_KEY environment variable not set");
-}
-
+// As per coding guidelines, initialize with process.env.API_KEY.
+// The key is assumed to be present and valid in the execution environment,
+// and it is injected by Vite during the build process.
 const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
 
 const parseJsonResponse = <T,>(text: string): T | null => {
